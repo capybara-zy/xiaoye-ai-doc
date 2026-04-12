@@ -154,7 +154,7 @@ claude
 - **VS Code**： 在扩展商店搜索 Claude Code（Anthropic 发布），安装后插件自动读取本地 CLI 配置。
 - **Cursor / Trae**： 参见对应教程，插件同样依赖本地 CLI。
 
-👉 [VS Code 插件教程](/vscode) | [Cursor 教程](/cursor) | [Trae 教程](/trae)
+👉 [Cursor 教程](/cursor) | [Trae 教程](/trae)
 
 ### 使用心得
 

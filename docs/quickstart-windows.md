@@ -80,5 +80,5 @@ claude
 重新打开终端窗口，运行 `claude` 即可
 
 ::: info
-✅ CLI 配置完成后，再去 [VS Code 插件教程](/roo-code) 或 [Cursor 教程](/cursor) 安装对应插件即可直接使用，无需在插件里重复配置 Key。
+✅ CLI 配置完成后，再去 [Cursor 教程](/cursor) 或 [Trae 教程](/trae) 安装对应插件即可直接使用，无需在插件里重复配置 Key。
 :::

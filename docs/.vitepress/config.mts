@@ -23,23 +23,14 @@ export default defineConfig({
         items: [
           { text: 'Claude Code', link: '/claude-code' },
           { text: 'OpenCode', link: '/opencode' },
-          { text: 'OpenClaw (首次安装)', link: '/openclaw' },
-          { text: 'OpenClaw (已跑通 · AI 自动接入)', link: '/openclaw-auto' },
-          { text: 'OpenClaw 配置模板', link: '/openclaw-config' },
           { text: 'Aider', link: '/aider' }
         ]
       },
       {
-        text: '💻 IDE 插件',
+        text: '💻 VS Code 插件',
         items: [
-          { text: '📘 VS Code 总览', link: '/vscode' },
-          { text: 'Roo Code', link: '/roo-code' },
-          { text: 'Cline', link: '/cline' },
-          { text: 'CodeX', link: '/codex' },
-          { text: 'Continue.dev', link: '/continue' },
           { text: 'Cursor', link: '/cursor' },
           { text: 'Trae', link: '/trae' },
-          { text: 'Windsurf', link: '/windsurf' }
         ]
       },
       {

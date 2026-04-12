@@ -20,7 +20,23 @@ features:
   - icon: 🚀
     title: 一键部署与二次分发
     details: 只需单可执行文件即可开箱即用，已全面打包 Docker。非常适合团队内部二次分发和统一 Key 额度管理。
-  - icon: ✅
-    title: 顶级全端兼容
-    details: 无论终端 CLI、编辑器插件 (VS Code/Cursor)，还是 LobeChat 等 Web 框架，均能完美适配。
 ---
+
+## 联系我们
+
+有任何问题欢迎扫码添加，获取技术支持与最新资讯。
+
+<div style="display:flex;gap:48px;margin-top:16px;align-items:flex-end;">
+  <div style="text-align:center;">
+    <a href="/wechat-qrcode.jpg" target="_blank">
+      <img src="/wechat-qrcode.jpg" alt="微信二维码" style="width:160px;height:160px;object-fit:cover;border-radius:8px;cursor:pointer;" />
+    </a>
+    <p style="margin-top:8px;color:#666;">微信</p>
+  </div>
+  <div style="text-align:center;">
+    <a href="/qq-qrcode.jpg" target="_blank">
+      <img src="/qq-qrcode.jpg" alt="QQ二维码" style="width:160px;height:160px;object-fit:cover;border-radius:8px;cursor:pointer;" />
+    </a>
+    <p style="margin-top:8px;color:#666;">QQ</p>
+  </div>
+</div>
