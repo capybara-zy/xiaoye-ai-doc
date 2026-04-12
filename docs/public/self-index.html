@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>君の公益 - 優しい世界へ。</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 全局重置与基础设置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif JP', serif; /* 日系经典衬线字体 */
+            /* 背景色调：模拟《你的名字》标志性的“分身之时” (Kataware-doki)
+              深蓝紫色天空过渡到温暖的橙粉色
+            */
+            background: linear-gradient(175deg,
+            #0d1117 0%,    /* 深邃的蓝黑夜空 */
+            #2d3a5e 30%,   /* 傍晚的蓝紫色 */
+            #ff7e67 75%,   /* 温暖的橙红 */
+            #ffedd5 100%   /* 地平线的柔白 */
+            );
+            color: #fff; /* 主文字为白色，在深色背景上更清透 */
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden; /* 绝对禁止滑动 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* 增加一点文字投影，提升可读性 */
+        }
+
+        /* 1. 彗星划过效果
+          2. 樱花/星尘点缀
+        */
+        #canvas-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* 允许鼠标穿透点击下方元素 */
+            z-index: 1;
+        }
+
+        /* 主体内容区容器 */
+        .wrapper {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 《你的名字》台词区域：优雅、静谧
+        */
+        .quote-container {
+            font-weight: 200;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2rem;
+            line-height: 2;
+        }
+
+        .quote-line {
+            opacity: 0;
+            animation: fadeInQuote 2s ease forwards;
+        }
+
+        .quote-line:nth-child(1) { animation-delay: 0.5s; }
+        .quote-line:nth-child(2) { animation-delay: 1.5s; }
+        .quote-line:nth-child(3) { animation-delay: 2.5s; }
+
+        @keyframes fadeInQuote {
+            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(10px); }
+        }
+
+        /* 核心标题：君の公益
+        */
+        .main-title-box {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        /* 象征“结” (Musubi) 的红线意象 */
+        .musubi-knot {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: #ff4757; /* 鲜艳的红色 */
+            border-radius: 2px;
+            opacity: 0.8;
+        }
+
+        h1 {
+            font-size: 6rem; /* 超大字号 */
+            font-weight: 700;
+            letter-spacing: 15px; /* 极宽的字间距，营造呼吸感 */
+            color: #fff;
+            user-select: none; /* 禁止选定，保护美感 */
+        }
+
+        /* 核心理念台词 */
+        .core-philosophy {
+            font-weight: 300;
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: -10px;
+        }
+
+        /* 底部署名：-by慕鸢
+        */
+        footer {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            z-index: 3;
+            font-size: 0.8rem;
+            font-weight: 200;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 1px;
+            font-family: sans-serif; /* 署名使用极简无衬线 */
+        }
+
+    </style>
+</head>
+<body>
+
+<canvas id="canvas-overlay"></canvas>
+
+<div class="wrapper">
+
+    <div class="quote-container">
+        <p class="quote-line">言おうと思ったんだ。</p>
+        <p class="quote-line">お前が世界のどこにいても、</p>
+        <p class="quote-line">俺が必ず、もう一度会いに行くって。</p>
+    </div>
+
+    <div class="main-title-box">
+        <div class="musubi-knot"></div>
+        <h1>XiaoYe API</h1>
+    </div>
+
+    <p class="core-philosophy">ずっと、何かを、誰かを、探している。</p>
+</div>
+
+<footer>
+    -by XiaoYe
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const canvas = document.getElementById('canvas-overlay');
+        const ctx = canvas.getContext('2d');
+
+        // 设置画布大小为全屏
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // 彗星对象
+        class Comet {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width * 0.5; // 从左侧开始
+                this.y = Math.random() * canvas.height * 0.3; // 偏上
+                this.length = Math.random() * 80 + 50; // 彗尾长度
+                this.speedX = Math.random() * 2 + 1; // 向右速度
+                this.speedY = Math.random() * 1 + 0.5; // 向下速度
+                this.opacity = Math.random() * 0.5 + 0.2; // 初始透明度
+                this.width = Math.random() * 2 + 1; // 彗核宽度
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                // 如果超出屏幕，则重置
+                if (this.x > canvas.width || this.y > canvas.height) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                // 彗星主体（彗核）
+                ctx.fillStyle = `rgba(255, 255, 255, ${this.opacity})`;
+                ctx.arc(this.x, this.y, this.width, 0, Math.PI * 2);
+                ctx.fill();
+
+                // 彗尾（使用渐变模拟）
+                const gradient = ctx.createLinearGradient(
+                    this.x, this.y,
+                    this.x - this.length, this.y - this.length * 0.5
+                );
+                gradient.addColorStop(0, `rgba(255, 255, 255, ${this.opacity * 0.8})`);
+                gradient.addColorStop(0.1, `rgba(135, 206, 235, ${this.opacity * 0.5})`); // 彗尾淡淡的蓝色
+                gradient.addColorStop(1, `rgba(255, 255, 255, 0)`); // 尾部透明
+
+                ctx.beginPath();
+                ctx.strokeStyle = gradient;
+                ctx.lineWidth = this.width * 1.5;
+                ctx.moveTo(this.x, this.y);
+                ctx.lineTo(this.x - this.length, this.y - this.length * 0.5);
+                ctx.stroke();
+            }
+        }
+
+        // 星尘对象（取代原本的樱花，更适合电影的天空）
+        class StarDust {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5 + 0.5;
+                this.opacity = Math.random() * 0.6 + 0.1;
+                this.fadeSpeed = Math.random() * 0.01 + 0.005;
+            }
+
+            update() {
+                // 模拟闪烁效果
+                this.opacity -= this.fadeSpeed;
+                if (this.opacity <= 0 || this.opacity >= 0.8) {
+                    this.fadeSpeed = -this.fadeSpeed;
+                }
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0, this.opacity)})`;
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        // 创建彗星和星尘数组
+        const comets = Array.from({ length: 3 }, () => new Comet());
+        const stardusts = Array.from({ length: 50 }, () => new StarDust());
+
+        // 动画循环
+        function animate() {
+            // 清除画布（保持半透明以创造尾迹感，但这里为了保持清透，直接清除）
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 更新并绘制星尘
+            stardusts.forEach(dust => {
+                dust.update();
+                dust.draw();
+            });
+
+            // 更新并绘制彗星
+            comets.forEach(comet => {
+                comet.update();
+                comet.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    });
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"7a371312a6184b1aa42b0484e4b2c3cb","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
