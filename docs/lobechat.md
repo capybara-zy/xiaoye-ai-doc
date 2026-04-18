@@ -34,10 +34,11 @@ docker run -d -p 3210:3210 lobehub/lobe-chat
 在 **模型列表** 中点击 **+** 添加自定义模型：
 
 ```
+claude-opus-4-7
+claude-opus-4-6
 claude-sonnet-4-6
-claude-opus-4-5
-gpt-4o
-gpt-4o-mini
+gpt-5.4
+gpt-5.3-codex
 ```
 
 ## 特色功能
@@ -45,4 +46,3 @@ gpt-4o-mini
 - **知识库**：上传文档，让 AI 基于你的资料回答
 - **插件系统**：联网搜索、代码执行、图像生成等
 - **多模态**：支持图片、文件输入
-- **助手市场**：丰富的预设 AI 助手角色

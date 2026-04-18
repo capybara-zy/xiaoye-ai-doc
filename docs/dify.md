@@ -49,7 +49,12 @@ docker compose up -d
 
 1. 进入 **知识库** → **创建知识库**
 2. 上传文档（PDF、Word、TXT 等）
-3. 选择 Embedding 模型（可使用 `text-embedding-3-small`）
+3. 选择 Embedding 模型
+
+::: warning
+XiaoYe API 目前只提供 Claude / GPT 系列对话模型，**不提供 Embedding 模型**。知识库的向量化需另行接入 OpenAI / 硅基流动 / 本地 BGE 等 Embedding 服务。
+:::
+
 4. 在应用中关联知识库
 
 ## 特色功能
@@ -57,4 +62,3 @@ docker compose up -d
 - **可视化工作流**：拖拽式构建复杂 AI 流程
 - **知识库 RAG**：精准文档检索增强
 - **API 发布**：一键将应用发布为 API
-- **数据分析**：查看应用使用统计

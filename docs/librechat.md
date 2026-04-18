@@ -38,10 +38,11 @@ endpoints:
       baseURL: "https://ai.xiaoye.io/v1"
       models:
         default:
+          - claude-opus-4-7
+          - claude-opus-4-6
           - claude-sonnet-4-6
-          - claude-opus-4-5
-          - gpt-4o
-          - gpt-4o-mini
+          - gpt-5.4
+          - gpt-5.3-codex
       titleConvo: true
       titleModel: "claude-sonnet-4-6"
 ```
@@ -58,7 +59,6 @@ docker compose restart
 
 ## 特色功能
 
-- **多用户支持**：团队共享部署，统一管理 Key
 - **对话分享**：生成分享链接
 - **插件**：支持联网搜索、代码解释器等
 - **多模型切换**：在同一对话中切换不同模型

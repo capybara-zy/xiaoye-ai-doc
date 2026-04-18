@@ -39,13 +39,7 @@ claude --version
 
 ### 第二步：配置 API Key
 
-运行一键配置工具，按提示输入你的 Key：
-
-```powershell
-npx timesniper-api
-```
-
-或手动创建/编辑 `C:\Users\你的用户名\.claude\settings.json`（macOS/Linux: `~/.claude/settings.json`）：
+创建/编辑 `C:\Users\你的用户名\.claude\settings.json`（macOS/Linux: `~/.claude/settings.json`）：
 
 ```json
 {
@@ -75,7 +69,7 @@ npx timesniper-api
 :::
 
 1. 重启后，左侧边栏点击 **Claude Code** 图标
-2. 插件会提示登录，**不要登录**，点击插件界面右上角的 **设置**（齿轮）图标，会自动打开 `settings.json`
+2. 插件会提示登录，**不要登录**。按 `Ctrl+,`（Mac: `Cmd+,`）打开设置，搜索 `claude-code.environmentVariables`，点击 **Edit in settings.json**
 3. 在 `settings.json` 中加入以下内容（`sk-` 替换为你的真实 Key）：
 
 ```json
@@ -107,8 +101,8 @@ npx timesniper-api
 1. `Ctrl+Shift+J` (Win) / `Cmd+Shift+J` (Mac) 打开 Cursor Settings
 2. 导航到 **Models** 选项卡
 3. **OpenAI API Key**: 填入你的 Key
-4. 打开 **Override OpenAI Base URL**，填入 `https://ai.xiaoye.io/v1`
-5. 在 **Add Model** 处添加：`claude-opus-4-6`、`claude-sonnet-4-5`、`gpt-4o` 等
+4. 打开 **Override OpenAI Base URL**，填入 `https://ai.xiaoye.io/v1`（注意这里是 OpenAI 兼容接口，必须带 `/v1`；Claude Code 插件用的 `ANTHROPIC_BASE_URL` 则不带 `/v1`）
+5. 在 **Add Model** 处添加：`claude-opus-4-7`、`claude-sonnet-4-6`、`gpt-5.4` 等
 6. 按 `Ctrl+L` 呼出 Chat 窗口，底部切换到新模型即可
 
 ## 常见问题与异常处理 (FAQ)

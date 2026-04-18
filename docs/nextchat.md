@@ -22,7 +22,7 @@ NextChat（原 ChatGPT-Next-Web）是一款优秀的开源 AI 客户端，支持
 在设置中的 **自定义模型** 字段填入你需要的模型名，例如：
 
 ```
-claude-sonnet-4-6,claude-opus-4-5,gpt-4o,gpt-4o-mini
+claude-opus-4-7,claude-opus-4-6,claude-sonnet-4-6,gpt-5.4,gpt-5.3-codex
 ```
 
 保存后，在对话页面点击模型名称即可切换。

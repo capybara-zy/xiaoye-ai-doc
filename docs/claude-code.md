@@ -41,17 +41,7 @@ claude --version
 
 ## 2. API 配置
 
-### 方式一：一键配置（推荐）
-
-安装好 CLI 后直接运行：
-
-```bash
-npx timesniper-api
-```
-
-按照提示输入 API Key 即可自动完成所有配置。
-
-### 方式二：手动配置
+### 写入 settings.json（推荐）
 
 编辑 `~/.claude/settings.json`（Windows: `C:\Users\用户名\.claude\settings.json`）：
 
@@ -63,12 +53,15 @@ npx timesniper-api
     "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "64000",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
   },
-  "permissions": { "allow": [], "deny": [] },
-  "alwaysThinkingEnabled": false
+  "permissions": { "allow": [], "deny": [] }
 }
 ```
 
-### 方式三：环境变量
+::: tip
+`ANTHROPIC_BASE_URL` 不带 `/v1`。OpenAI 兼容客户端才需要 `/v1`。
+:::
+
+### 临时使用环境变量（可选）
 
 Linux / macOS:
 

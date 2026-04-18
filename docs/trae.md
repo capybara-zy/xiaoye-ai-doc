@@ -39,13 +39,7 @@ claude --version
 
 ### 第二步：配置 API Key
 
-运行一键配置工具，按提示输入你的 Key：
-
-```powershell
-npx timesniper-api
-```
-
-或手动创建/编辑 `C:\Users\你的用户名\.claude\settings.json`（macOS/Linux: `~/.claude/settings.json`）：
+创建/编辑 `C:\Users\你的用户名\.claude\settings.json`（macOS/Linux: `~/.claude/settings.json`）：
 
 ```json
 {

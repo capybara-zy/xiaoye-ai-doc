@@ -12,14 +12,14 @@ export default defineConfig({
     ],
     sidebar: [
       {
-        text: '⚡ 快速开始',
+        text: '快速开始',
         items: [
           { text: 'Windows', link: '/quickstart-windows' },
           { text: 'macOS / Linux', link: '/quickstart-mac' }
         ]
       },
       {
-        text: '🚀 CLI 工具 (终端)',
+        text: 'CLI 工具 (终端)',
         items: [
           { text: 'Claude Code', link: '/claude-code' },
           { text: 'OpenCode', link: '/opencode' },
@@ -27,14 +27,14 @@ export default defineConfig({
         ]
       },
       {
-        text: '💻 VS Code 插件',
+        text: 'VS Code 插件',
         items: [
           { text: 'Cursor', link: '/cursor' },
           { text: 'Trae', link: '/trae' },
         ]
       },
       {
-        text: '💬 独立客户端',
+        text: '独立客户端',
         items: [
           { text: 'Cherry Studio', link: '/cherry-studio' },
           { text: 'Chatbox', link: '/chatbox' },
@@ -42,7 +42,7 @@ export default defineConfig({
         ]
       },
       {
-        text: '🌐 Web 框架 & 知识库',
+        text: 'Web 框架 & 知识库',
         items: [
           { text: 'LobeChat', link: '/lobechat' },
           { text: 'LibreChat', link: '/librechat' },

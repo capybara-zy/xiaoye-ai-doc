@@ -57,8 +57,9 @@ opencode auth login
         "baseURL": "https://ai.xiaoye.io/v1"
       },
       "models": {
+        "claude-opus-4-7": { "name": "claude opus 4.7" },
         "claude-opus-4-6": { "name": "claude opus 4.6" },
-        "claude-sonnet-4-5": { "name": "claude-sonnet-4-5" }
+        "claude-sonnet-4-6": { "name": "claude sonnet 4.6" }
       }
     },
     "xiaoyeapi-gpt": {
@@ -69,7 +70,8 @@ opencode auth login
         "apiKey": "sk-你的GPT分组Key"
       },
       "models": {
-        "gpt-4o": { "name": "gpt-4o" }
+        "gpt-5.4": { "name": "gpt-5.4" },
+        "gpt-5.3-codex": { "name": "gpt-5.3-codex" }
       }
     }
   }
