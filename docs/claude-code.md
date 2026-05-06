@@ -50,7 +50,6 @@ claude --version
   "env": {
     "ANTHROPIC_AUTH_TOKEN": "sk-你的Key",
     "ANTHROPIC_BASE_URL": "https://ai.xiaoye.io",
-    "CLAUDE_CODE_MAX_OUTPUT_TOKENS": "64000",
     "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1"
   },
   "permissions": { "allow": [], "deny": [] }

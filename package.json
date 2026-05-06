@@ -1,7 +1,7 @@
 {
   "name": "xiaoye-ai-doc",
   "version": "1.0.0",
-  "description": "一元模型 API 文档",
+  "description": "XiaoYe AI API 文档",
   "type": "module",
   "scripts": {
     "docs:dev": "vitepress dev docs",
